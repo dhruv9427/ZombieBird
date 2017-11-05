@@ -7,6 +7,8 @@ import com.kilobolt.zombiebird.ZBGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		//Initial setup of the splash screen
+		//Call image badlogic.jpg
 		config.title="Zombie Bird";
 		config.width=480;
 		config.height=320;
