@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		//Initial setup of the splash screen
 		//Call image badlogic.jpg
+		//Comments
 		config.title="Zombie Bird";
 		config.width=480;
 		config.height=320;
