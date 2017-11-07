@@ -11,8 +11,8 @@ public class DesktopLauncher {
 		//Call image badlogic.jpg
 		//Comments
 		config.title="Zombie Bird";
-		config.width=480;
-		config.height=320;
+		config.width=272;
+		config.height=408;
 		new LwjglApplication(new ZBGame(), config);
 	}
 }
