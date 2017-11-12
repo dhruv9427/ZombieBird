@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.kilobolt.gameworld.GameRenderer;
 import com.kilobolt.gameworld.GameWorld;
+import com.kilobolt.zbHelpers.InputHandler;
 
 /**
  * Created by DhruvSingh on 05/11/2017.
@@ -16,17 +17,26 @@ public class GameScreen implements Screen {
 
 
 
+
     public GameScreen(){
-        Gdx.app.log("GameScreen", "Attached");
-        world =  new GameWorld();
+        //Gdx.app.log("GameScreen", "Attached");
+        //As a scalable ratio for a good game, game height/game width = screen height/screen width
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        float gameWidth = 136;
+        float gameHeight = screenHeight/(screenWidth/gameWidth);
+        int midPointY = (int)(gameHeight/2);
+        world =  new GameWorld(midPointY);
         renderer = new GameRenderer(world);
+
+        Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
     }
 
     @Override
     public void render(float delta) {
         world.update(delta);
         renderer.render();
-        //passing delta into the update method to perform frame-rate independent movement
+        //passing delta into the method to perform frame-rate independent movement
         //Sets colour to fill the screen, RGB = 10,15,230
         //Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
         //Fills the screen with selected colour
