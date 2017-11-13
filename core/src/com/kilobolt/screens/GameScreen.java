@@ -14,7 +14,7 @@ public class GameScreen implements Screen {
 
     private GameWorld world;
     private GameRenderer renderer;
-
+    private float runTime = 0;
 
 
 
@@ -25,17 +25,20 @@ public class GameScreen implements Screen {
         float screenHeight = Gdx.graphics.getHeight();
         float gameWidth = 136;
         float gameHeight = screenHeight/(screenWidth/gameWidth);
+
         int midPointY = (int)(gameHeight/2);
+
         world =  new GameWorld(midPointY);
-        renderer = new GameRenderer(world);
+        renderer = new GameRenderer(world, (int) gameHeight, midPointY);
 
         Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
     }
 
     @Override
     public void render(float delta) {
+        runTime+= delta;
         world.update(delta);
-        renderer.render();
+        renderer.render(runTime);
         //passing delta into the method to perform frame-rate independent movement
         //Sets colour to fill the screen, RGB = 10,15,230
         //Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
