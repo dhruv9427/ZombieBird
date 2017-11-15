@@ -23,6 +23,8 @@ public class AssetLoader {
     public static void load(){
 
         texture = new Texture(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\texture.png"));
+        //texture = new Texture(Gdx.files.internal("texture.png"));
+        //C:\Users\DhruvSingh\Desktop\ZombieBird\core\src\com\kilobolt\zbHelpers\texture.png
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         bg = new TextureRegion(texture, 0, 0, 136, 43);
