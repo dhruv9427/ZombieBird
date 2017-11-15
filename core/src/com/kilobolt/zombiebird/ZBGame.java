@@ -14,7 +14,6 @@ public class ZBGame extends Game{
 	@Override
 	public void create() {
 		Gdx.app.log("ZBGame", "created");
-		//Load the animations before Game Screen
 		AssetLoader.load();
 		setScreen(new GameScreen());
 	}
