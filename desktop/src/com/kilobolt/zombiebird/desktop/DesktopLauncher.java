@@ -7,7 +7,7 @@ import com.kilobolt.zombiebird.ZBGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-
+		//DesktopLauncher
 		config.title="Zombie Bird";
 		config.width=272;
 		config.height=408;
