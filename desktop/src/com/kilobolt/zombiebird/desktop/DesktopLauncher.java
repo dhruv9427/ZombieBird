@@ -8,6 +8,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		//DesktopLauncher
+		//Dhruv
 		config.title="Zombie Bird";
 		config.width=272;
 		config.height=408;
