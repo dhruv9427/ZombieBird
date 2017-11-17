@@ -29,6 +29,22 @@ public class Bird {
         if(velocity.y > 200){
             velocity.y = 200;
         }
+        //Rotation counterclockwise
+        if(velocity.y<0)
+        {
+            rotation-= 600* delta;
+            if(rotation<-20){
+                rotation=-20;
+            }
+        }
+        //Rotation clockwise
+        if(isFalling()){
+            rotation+=480*delta;
+            if(rotation>90){
+                rotation=90;
+            }
+
+        }
 
         position.add(velocity.cpy().scl(delta));
     }
@@ -57,5 +73,12 @@ public class Bird {
         return rotation;
     }
 
+    public boolean isFalling(){
+        return velocity.y>110;
+    }
+
+    public boolean shouldntFlap(){
+        return velocity.y>70;
+    }
 
 }
