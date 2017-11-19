@@ -165,37 +165,43 @@ public class GameRenderer {
         shapeRenderer.end();
     }
 
-
+///*
+//         * Excuse the mess below. Temporary code for testing bounding
+//         * rectangles.
+//         */
+//    // Bar up for pipes 1 2 and 3
+//    shapeRenderer.rect(pipe1.getBarUp().x, pipe1.getBarUp().y,
+//            pipe1.getBarUp().width, pipe1.getBarUp().height);
+//    shapeRenderer.rect(pipe2.getBarUp().x, pipe2.getBarUp().y,
+//            pipe2.getBarUp().width, pipe2.getBarUp().height);
+//    shapeRenderer.rect(pipe3.getBarUp().x, pipe3.getBarUp().y,
+//            pipe3.getBarUp().width, pipe3.getBarUp().height);
+//
+//    // Bar down for pipes 1 2 and 3
+//    shapeRenderer.rect(pipe1.getBarDown().x, pipe1.getBarDown().y,
+//            pipe1.getBarDown().width, pipe1.getBarDown().height);
+//    shapeRenderer.rect(pipe2.getBarDown().x, pipe2.getBarDown().y,
+//            pipe2.getBarDown().width, pipe2.getBarDown().height);
+//    shapeRenderer.rect(pipe3.getBarDown().x, pipe3.getBarDown().y,
+//            pipe3.getBarDown().width, pipe3.getBarDown().height);
+//
+//    // Skull up for Pipes 1 2 and 3
+//    shapeRenderer.rect(pipe1.getSkullUp().x, pipe1.getSkullUp().y,
+//            pipe1.getSkullUp().width, pipe1.getSkullUp().height);
+//    shapeRenderer.rect(pipe2.getSkullUp().x, pipe2.getSkullUp().y,
+//            pipe2.getSkullUp().width, pipe2.getSkullUp().height);
+//    shapeRenderer.rect(pipe3.getSkullUp().x, pipe3.getSkullUp().y,
+//            pipe3.getSkullUp().width, pipe3.getSkullUp().height);
+//
+//    // Skull down for Pipes 1 2 and 3
+//    shapeRenderer.rect(pipe1.getSkullDown().x, pipe1.getSkullDown().y,
+//            pipe1.getSkullDown().width, pipe1.getSkullDown().height);
+//    shapeRenderer.rect(pipe2.getSkullDown().x, pipe2.getSkullDown().y,
+//            pipe2.getSkullDown().width, pipe2.getSkullDown().height);
+//    shapeRenderer.rect(pipe3.getSkullDown().x, pipe3.getSkullDown().y,
+//            pipe3.getSkullDown().width, pipe3.getSkullDown().height);
 
 
 
 
 }
-
-
-//public void render(){
-
-//        Gdx.app.log("Game renderer", "render");
-//
-//        //1. Draw a black background to prevent flickering
-//        Gdx.gl.glClearColor(0, 0, 0, 1);
-//        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//
-//        //2. Draw the filled rectangle
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-//        //Choose RGB colour at full opacity
-//        shapeRenderer.setColor(87/255.0f, 109/255.0f, 102/255.0f, 1);
-//        //draws the rectangle from myWorld using ShapeType.Filled
-//        shapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y, myWorld.getRect().height, myWorld.getRect().width);
-//        //tell it to finish rendering (very important!)
-//        shapeRenderer.end();
-//
-//        //3. Draw an outline of the following shape
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-//        //Choose RGB colour at full opacity
-//        shapeRenderer.setColor(255/255.0f, 109/255.0f, 120/255.0f, 1);
-//        //draws the rectangle from myWorld using ShapeType.Line
-//        shapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y, myWorld.getRect().height, myWorld.getRect().width);
-//        //tell it to finish rendering (very important!)
-//        shapeRenderer.end();
-// }

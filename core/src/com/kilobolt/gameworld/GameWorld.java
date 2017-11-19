@@ -26,6 +26,9 @@ public class GameWorld {
     public void update(float delta){
         bird.update(delta);
         scroller.update(delta);
+        if (scroller.collides(bird)) {
+            scroller.stop();
+        }
         //Gdx.app.log("Game Update", "Update");
         //Now allow the rectangle to scroll to the right and then reset after 137
         //rect.x++;

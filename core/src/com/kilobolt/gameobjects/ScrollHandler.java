@@ -46,6 +46,23 @@ public class ScrollHandler {
 
     }
 
+    public void stop(){
+        pipe1.stop();
+        pipe2.stop();
+        pipe3.stop();
+        frontGrass.stop();
+        backGrass.stop();
+
+    }
+
+    public boolean collides(Bird bird){
+
+        //return TRUE if the bird collides with any pipe
+        return(pipe1.collides(bird) || pipe2.collides(bird) || pipe3.collides(bird));
+
+    }
+
+
     public Grass getFrontGrass() {
         return frontGrass;
     }
