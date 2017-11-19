@@ -10,7 +10,7 @@ public class ScrollHandler {
 
     //Use these constants (In capital letters) to determine how fast to scroll and gap size between pipes
     public static final int SCROLL_SPEED = -59;
-    public static final int PIPE_GAP = 49;
+    public static final int PIPE_GAP = 89;
 
     public ScrollHandler(float yPos) {
         frontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
