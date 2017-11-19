@@ -22,7 +22,7 @@ public class Pipe extends Scrollable {
     //When the pipe's constructor is invoked, we invoke the Scrollable (super)
 
 
-    public Pipe(float x, float y, int width, int height, float scrollSpeed) {
+    public Pipe(float x, float y, int width, int height, float scrollSpeed, float groundY) {
         super(x, y, width, height, scrollSpeed);
         r = new Random();
         skullUp = new Rectangle();
@@ -39,7 +39,7 @@ public class Pipe extends Scrollable {
         super.update(delta);
         //Using set method to set the top left corner x, y coordinates along with width, height of rectangle
         barUp.set(position.x, position.y, width, height);
-        barDown.set(position.x, position.y + VERTICAL_GAP + height, width, groundY-(position.y + VERTICAL_GAP + height))
+        barDown.set(position.x, position.y + VERTICAL_GAP + height, width, groundY-(position.y + VERTICAL_GAP + height));
         skullUp.set(position.x - (SKULL_WIDTH - width)/2, position.y + height - SKULL_HEIGHT, SKULL_WIDTH, SKULL_HEIGHT);
         skullDown.set(position.x - (SKULL_WIDTH - width)/2, barDown.y, SKULL_WIDTH, SKULL_HEIGHT);
     }
