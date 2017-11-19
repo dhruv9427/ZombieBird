@@ -6,6 +6,7 @@ import com.kilobolt.gameobjects.Bird;
 import com.kilobolt.gameobjects.Grass;
 import com.kilobolt.gameobjects.Pipe;
 import com.kilobolt.gameobjects.ScrollHandler;
+import com.kilobolt.zbHelpers.AssetLoader;
 
 /**
  * Created by DhruvSingh on 07/11/2017.
@@ -15,6 +16,7 @@ public class GameWorld {
 
     private Bird bird;
     private ScrollHandler scroller;
+    private Boolean isAlive = true;
 
     //private Rectangle rect = new Rectangle(0, 0, 17, 12);
 
@@ -26,8 +28,10 @@ public class GameWorld {
     public void update(float delta){
         bird.update(delta);
         scroller.update(delta);
-        if (scroller.collides(bird)) {
+        if (isAlive && scroller.collides(bird)) {
             scroller.stop();
+            AssetLoader.dead.play();
+            isAlive = false;
         }
         //Gdx.app.log("Game Update", "Update");
         //Now allow the rectangle to scroll to the right and then reset after 137

@@ -159,16 +159,17 @@ public class GameRenderer {
         //end SpriteBatch
         batcher.end();
 
-        shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(Color.RED);
-        shapeRenderer.circle(bird.getBoundingCircle().x, bird.getBoundingCircle().y, bird.getBoundingCircle().radius);
-        shapeRenderer.end();
+
     }
 
 ///*
 //         * Excuse the mess below. Temporary code for testing bounding
 //         * rectangles.
 //         */
+//    shapeRenderer.begin(ShapeType.Filled);
+//    shapeRenderer.setColor(Color.RED);
+//    shapeRenderer.circle(bird.getBoundingCircle().x, bird.getBoundingCircle().y, bird.getBoundingCircle().radius);
+//    shapeRenderer.end();
 //    // Bar up for pipes 1 2 and 3
 //    shapeRenderer.rect(pipe1.getBarUp().x, pipe1.getBarUp().y,
 //            pipe1.getBarUp().width, pipe1.getBarUp().height);

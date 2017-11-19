@@ -13,9 +13,9 @@ public class ScrollHandler {
     public static final int PIPE_GAP = 89;
 
     public ScrollHandler(float yPos) {
-        pipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
-        pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP,0, 22, 70, SCROLL_SPEED, yPos);
-        pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP,0, 22, 60, SCROLL_SPEED, yPos);
+        pipe1 = new Pipe(210, 0, 20, 58, SCROLL_SPEED, yPos);
+        pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP,0, 20, 68, SCROLL_SPEED, yPos);
+        pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP,0, 20, 58, SCROLL_SPEED, yPos);
 
         frontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), yPos, 143, 11, SCROLL_SPEED);

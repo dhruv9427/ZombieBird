@@ -14,8 +14,8 @@ public class Pipe extends Scrollable {
 
     private Rectangle skullUp, skullDown, barUp, barDown;
 
-    public static final int VERTICAL_GAP = 45;
-    public static final int SKULL_WIDTH = 24;
+    public static final int VERTICAL_GAP = 60;
+    public static final int SKULL_WIDTH = 18;
     public static final int SKULL_HEIGHT = 11;
     private float groundY;
 
