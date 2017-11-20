@@ -66,9 +66,9 @@ public class AssetLoader {
         coin = Gdx.audio.newSound(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\coin.wav"));
 
         font = new BitmapFont(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\text.fnt"));
-        //font.setScale(.25f, -.25f);
+        font.getData().setScale(.25f, -.25f);
         shadow = new BitmapFont(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\shadow.fnt"));
-        //shadow.setScale(.25f, -.25f);
+        shadow.getData().setScale(.25f, -.25f);
 
     }
 

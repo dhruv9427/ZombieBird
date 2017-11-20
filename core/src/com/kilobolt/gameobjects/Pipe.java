@@ -14,10 +14,11 @@ public class Pipe extends Scrollable {
 
     private Rectangle skullUp, skullDown, barUp, barDown;
 
-    public static final int VERTICAL_GAP = 60;
-    public static final int SKULL_WIDTH = 18;
+    public static final int VERTICAL_GAP = 58;
+    public static final int SKULL_WIDTH = 24;
     public static final int SKULL_HEIGHT = 11;
     private float groundY;
+    private Boolean isScored = false;
 
 
     //When the pipe's constructor is invoked, we invoke the Scrollable (super)
@@ -52,6 +53,7 @@ public class Pipe extends Scrollable {
         super.reset(newX);
         //Change the height to a random number
         height = r.nextInt(90) + 15;
+        isScored = false;
     }
 
     public boolean collides(Bird bird){
@@ -62,6 +64,10 @@ public class Pipe extends Scrollable {
                     || Intersector.overlaps(bird.getBoundingCircle(), skullDown) || Intersector.overlaps(bird.getBoundingCircle(), skullUp));
         }
         return false;
+    }
+
+    public void setScored(Boolean b) {
+        isScored = b;
     }
 
     public Rectangle getSkullUp() {
@@ -78,6 +84,10 @@ public class Pipe extends Scrollable {
 
     public Rectangle getBarDown() {
         return barDown;
+    }
+
+    public Boolean isScored() {
+        return isScored;
     }
 
 

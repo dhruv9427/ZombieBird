@@ -141,6 +141,7 @@ public class GameRenderer {
         drawGrass();
         drawPipes();
 
+
         //bird needs transparency so enable again
         batcher.enableBlending();
         drawSkulls(); //skulls requires transparency
@@ -155,7 +156,11 @@ public class GameRenderer {
         }
         else{batcher.draw((TextureRegion) birdAnimation.getKeyFrame(runTime), bird.getX(), bird.getY(), bird.getWidth()/2.0f, bird.getHeight()/2.0f, bird.getWidth(), bird.getHeight(), 1, 1, bird.getRotation());
         }
+        //convert integer into string
+        String score = myWorld.getScore()+"";
 
+        AssetLoader.shadow.draw(batcher, ""+ myWorld.getScore(), (136/2)-(3*score.length()),12);
+        AssetLoader.font.draw(batcher, ""+ myWorld.getScore(), (136/2)-(3*score.length()-1),11);
         //end SpriteBatch
         batcher.end();
 

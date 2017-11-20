@@ -1,5 +1,8 @@
 package com.kilobolt.gameobjects;
 
+import com.kilobolt.gameworld.GameWorld;
+import com.kilobolt.zbHelpers.AssetLoader;
+
 /**
  * Created by DhruvSingh on 16/11/2017.
  */
@@ -7,12 +10,13 @@ public class ScrollHandler {
     //Creation of 5 objects
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
-
     //Use these constants (In capital letters) to determine how fast to scroll and gap size between pipes
     public static final int SCROLL_SPEED = -59;
     public static final int PIPE_GAP = 89;
+    private GameWorld gameWorld;
 
-    public ScrollHandler(float yPos) {
+    public ScrollHandler(GameWorld gameWorld, float yPos) {
+        this.gameWorld = gameWorld;
         pipe1 = new Pipe(210, 0, 20, 58, SCROLL_SPEED, yPos);
         pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP,0, 20, 68, SCROLL_SPEED, yPos);
         pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP,0, 20, 58, SCROLL_SPEED, yPos);
@@ -57,9 +61,27 @@ public class ScrollHandler {
 
     public boolean collides(Bird bird){
 
+        if(!pipe1.isScored() && pipe1.getX() + (pipe1.getWidth()/2) < bird.getX() + bird.getWidth()){
+            addScore(1);
+            pipe1.setScored(true);
+            AssetLoader.coin.play();
+        }else if(!pipe2.isScored() && pipe2.getX() + (pipe2.getWidth()/2) < bird.getX() + bird.getWidth()) {
+            addScore(1);
+            pipe2.setScored(true);
+            AssetLoader.coin.play();
+        }else if(!pipe3.isScored() && pipe3.getX() + (pipe3.getWidth()/2) < bird.getX() + bird.getWidth()) {
+            addScore(1);
+            pipe3.setScored(true);
+            AssetLoader.coin.play();
+
+        }
         //return TRUE if the bird collides with any pipe
         return(pipe1.collides(bird) || pipe2.collides(bird) || pipe3.collides(bird));
 
+    }
+
+    private void addScore(int increment){
+        gameWorld.addScore(increment);
     }
 
 
@@ -82,4 +104,6 @@ public class ScrollHandler {
     public Pipe getPipe3() {
         return pipe3;
     }
+
+
 }
