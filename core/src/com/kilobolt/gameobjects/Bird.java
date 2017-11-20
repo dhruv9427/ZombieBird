@@ -2,6 +2,7 @@ package com.kilobolt.gameobjects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.kilobolt.zbHelpers.AssetLoader;
 
 /**
  * Created by DhruvSingh on 12/11/2017.
@@ -17,6 +18,8 @@ public class Bird {
 
     private Circle boundingCircle;
 
+    private Boolean isAlive;
+
     public Bird(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
@@ -24,15 +27,19 @@ public class Bird {
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 460);
         boundingCircle = new Circle();
+        isAlive = true;
     }
 
     public void update(float delta){
         velocity.add(acceleration.cpy().scl(delta));
-        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
+
 
         if(velocity.y > 200){
             velocity.y = 200;
         }
+        position.add(velocity.cpy().scl(delta));
+        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
+
         //Rotation counterclockwise
         if(velocity.y<0)
         {
@@ -42,19 +49,33 @@ public class Bird {
             }
         }
         //Rotation clockwise
-        if(isFalling()){
+        if(isFalling() || !isAlive){
             rotation+=480*delta;
             if(rotation>90){
-                rotation=180;
+                rotation=90;
             }
 
         }
 
-        position.add(velocity.cpy().scl(delta));
+
     }
 
     public void onClick(){
-        velocity.y = -140;
+        if(isAlive){
+            AssetLoader.flap.play();
+            velocity.y = -140;
+        }
+    }
+
+    public void die(){
+
+        isAlive = false;
+        velocity.y = 0;
+    }
+
+    public void decelerate(){
+        //bird should stop accelerating downwards once it is dead
+        acceleration.y = 0;
     }
 
     public float getX(){
@@ -82,10 +103,14 @@ public class Bird {
     }
 
     public boolean shouldntFlap(){
-        return velocity.y>70;
+        return velocity.y>70 || !isAlive;
     }
 
     public Circle getBoundingCircle() {
         return boundingCircle;
+    }
+
+    public Boolean isAlive() {
+        return isAlive;
     }
 }

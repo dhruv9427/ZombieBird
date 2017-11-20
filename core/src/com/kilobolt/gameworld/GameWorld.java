@@ -1,6 +1,7 @@
 package com.kilobolt.gameworld;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.kilobolt.gameobjects.Bird;
 import com.kilobolt.gameobjects.Grass;
@@ -16,29 +17,35 @@ public class GameWorld {
 
     private Bird bird;
     private ScrollHandler scroller;
-    private Boolean isAlive = true;
-
+    //private Boolean isAlive = true;
+    private Rectangle ground;
     //private Rectangle rect = new Rectangle(0, 0, 17, 12);
 
     public GameWorld(int midPointY){
         bird = new Bird(33, midPointY - 5, 17, 12);
         scroller = new ScrollHandler(midPointY + 66);
+        ground = new Rectangle(0, midPointY + 66, 136, 11);
     }
 
     public void update(float delta){
+        //Adding a limit on delta so if the game takes too long to update the collision detection doesn't break
+        if (delta > .15f){
+            delta = .15f;
+        }
         bird.update(delta);
         scroller.update(delta);
-        if (isAlive && scroller.collides(bird)) {
+
+        if (scroller.collides(bird) && bird.isAlive()){
             scroller.stop();
+            bird.die();
             AssetLoader.dead.play();
-            isAlive = false;
         }
-        //Gdx.app.log("Game Update", "Update");
-        //Now allow the rectangle to scroll to the right and then reset after 137
-        //rect.x++;
-        //if (rect.x>137){
-            //rect.x=0;
-       // }
+
+        if(Intersector.overlaps(bird.getBoundingCircle(), ground)){
+            scroller.stop();
+            bird.die();
+            bird.decelerate();
+        }
     }
 
     public Bird getBird() {
