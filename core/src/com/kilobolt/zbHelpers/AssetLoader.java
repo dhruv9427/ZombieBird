@@ -1,6 +1,7 @@
 package com.kilobolt.zbHelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -26,6 +27,8 @@ public class AssetLoader {
     public static Sound coin;
 
     public static BitmapFont font, shadow;
+
+    public static Preferences prefs;
 
     public static void load(){
 
@@ -70,7 +73,27 @@ public class AssetLoader {
         shadow = new BitmapFont(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\shadow.fnt"));
         shadow.getData().setScale(.25f, -.25f);
 
+        //Creating or retrieving preferences file
+        prefs = Gdx.app.getPreferences("ZombieBird");
+        //Provide default high score of 0
+        if(!prefs.contains("highScore")){
+            prefs.putInteger("highScore", 0);
+        }
+
     }
+
+    //Receives an integer and maps it to string highScore in prefs (above)
+    public static void setHighScore(int val){
+        prefs.putInteger("highScore", val);
+        prefs.flush();
+    }
+
+
+    //retrieves current high score
+    public static int getHighScore(){
+        return prefs.getInteger("highScore");
+    }
+
 
     public static void dispose(){
         //We must dispose of the texture when finished

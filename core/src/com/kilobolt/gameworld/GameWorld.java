@@ -10,7 +10,6 @@ import com.kilobolt.gameobjects.Pipe;
 import com.kilobolt.gameobjects.ScrollHandler;
 import com.kilobolt.zbHelpers.AssetLoader;
 
-import static android.os.AsyncTask.Status.RUNNING;
 
 /**
  * Created by DhruvSingh on 07/11/2017.
@@ -29,8 +28,8 @@ public class GameWorld {
 
     private GameState currentState;
 
-    public enum GameState(){
-        READY, RUNNING, GAMEOVER
+    public enum GameState{
+        READY, RUNNING, GAMEOVER, HIGHSCORE
     }
 
     public GameWorld(int midPointY){
@@ -51,6 +50,8 @@ public class GameWorld {
 
             case RUNNING:
                 updateRunning(delta);
+                break;
+            default:
                 break;
         }
 
@@ -80,6 +81,12 @@ public class GameWorld {
             bird.die();
             bird.decelerate();
             currentState = GameState.GAMEOVER;
+
+            if(score> AssetLoader.getHighScore()){
+                AssetLoader.setHighScore(score);
+                currentState = GameState.HIGHSCORE;
+            }
+
         }
 
     }
@@ -119,6 +126,10 @@ public class GameWorld {
 
     public boolean isGameOver(){
         return currentState == GameState.GAMEOVER;
+    }
+
+    public boolean isHighScore(){
+        return currentState == GameState.HIGHSCORE;
     }
 
 
