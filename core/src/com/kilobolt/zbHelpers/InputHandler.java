@@ -2,6 +2,7 @@ package com.kilobolt.zbHelpers;
 
 import com.badlogic.gdx.InputProcessor;
 import com.kilobolt.gameobjects.Bird;
+import com.kilobolt.gameworld.GameWorld;
 
 /**
  * Created by DhruvSingh on 12/11/2017.
@@ -9,11 +10,13 @@ import com.kilobolt.gameobjects.Bird;
 public class InputHandler implements InputProcessor {
 
     private Bird myBird;
+    private GameWorld myWorld;
 
-    public InputHandler(Bird bird) {
-        //The bird object in InputHandler, is referenced to the bird object in GameScreen/GameWorld/Bird classes
-        myBird = bird;
+    public InputHandler(GameWorld myWorld) {
         //myBird now represents gameworld's bird
+        this.myWorld = myWorld;
+        myBird = myWorld.getBird();
+
     }
 
     @Override
@@ -33,9 +36,14 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        //This is the method I am primarily concerned with for now
-        //This should call the Bird onClick() method
+        if (myWorld.isReady()){
+            myWorld.start();
+        }
         myBird.onClick();
+
+        if (myWorld.isGameOver()){
+            myWorld.restart();
+        }
         return true;//return True to say we handled the touch
     }
 

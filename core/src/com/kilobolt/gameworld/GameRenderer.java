@@ -156,6 +156,23 @@ public class GameRenderer {
         }
         else{batcher.draw((TextureRegion) birdAnimation.getKeyFrame(runTime), bird.getX(), bird.getY(), bird.getWidth()/2.0f, bird.getHeight()/2.0f, bird.getWidth(), bird.getHeight(), 1, 1, bird.getRotation());
         }
+
+
+        //TEMPORARY CODE: Will fix this section later
+        if(myWorld.isReady()){
+            AssetLoader.shadow.draw(batcher, "Touch Me", (136/2)-(42), 76);
+            AssetLoader.font.draw(batcher, "Touch Me", (136/2)-(42-1), 75);
+        }else{
+            if(myWorld.isGameOver()){
+                AssetLoader.shadow.draw(batcher, "Game Over", 25, 56);
+                AssetLoader.font.draw(batcher, "Game Over", 24, 55);
+
+                AssetLoader.shadow.draw(batcher, "Try Again?", 23, 76);
+                AssetLoader.font.draw(batcher, "Try Again", 24, 75);
+
+            }
+        }
+
         //convert integer into string
         String score = myWorld.getScore()+"";
 
