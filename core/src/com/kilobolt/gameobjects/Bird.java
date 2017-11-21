@@ -37,6 +37,13 @@ public class Bird {
         if(velocity.y > 200){
             velocity.y = 200;
         }
+
+        //CEILING CHECK
+        if(position.y<-13){
+            position.y=-13;
+            velocity.y = 0;
+        }
+
         position.add(velocity.cpy().scl(delta));
         boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
 
