@@ -1,5 +1,6 @@
 package com.kilobolt.gameworld;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -8,6 +9,8 @@ import com.kilobolt.gameobjects.Grass;
 import com.kilobolt.gameobjects.Pipe;
 import com.kilobolt.gameobjects.ScrollHandler;
 import com.kilobolt.zbHelpers.AssetLoader;
+
+import static android.os.AsyncTask.Status.RUNNING;
 
 /**
  * Created by DhruvSingh on 07/11/2017.
@@ -20,16 +23,45 @@ public class GameWorld {
     //private Boolean isAlive = true;
     private Rectangle ground;
     //private Rectangle rect = new Rectangle(0, 0, 17, 12);
-
     private int score = 0;
 
+    public int midPointY;
+
+    private GameState currentState;
+
+    public enum GameState(){
+        READY, RUNNING, GAMEOVER
+    }
+
     public GameWorld(int midPointY){
+        currentState = GameState.READY;
+        this.midPointY = midPointY;
         bird = new Bird(33, midPointY - 5, 17, 12);
         scroller = new ScrollHandler(this, midPointY + 66);
         ground = new Rectangle(0, midPointY + 66, 136, 11);
+
     }
 
     public void update(float delta){
+
+        switch(currentState){
+            case READY:
+                updateReady(delta);
+                break;
+
+            case RUNNING:
+                updateRunning(delta);
+                break;
+        }
+
+    }
+
+    private void updateReady(float delta){
+
+    }
+
+    public void updateRunning(float delta){
+
         //Adding a limit on delta so if the game takes too long to update the collision detection doesn't break
         if (delta > .15f){
             delta = .15f;
@@ -47,7 +79,9 @@ public class GameWorld {
             scroller.stop();
             bird.die();
             bird.decelerate();
+            currentState = GameState.GAMEOVER;
         }
+
     }
 
     public Bird getBird() {
@@ -66,7 +100,26 @@ public class GameWorld {
         score+= increment;
     }
 
-    //    public Rectangle getRect() {
-//        return rect;
-//    }
+
+    public boolean isReady(){
+        return currentState == GameState.READY;
+    }
+
+    public void start(){
+        currentState = GameState.RUNNING;
+    }
+
+    public void restart(){
+        currentState = GameState.READY;
+        score = 0;
+        bird.onRestart(midPointY - 5);
+        scroller.onRestart();
+        currentState = GameState.READY;
+    }
+
+    public boolean isGameOver(){
+        return currentState == GameState.GAMEOVER;
+    }
+
+
 }

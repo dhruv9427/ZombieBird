@@ -56,6 +56,11 @@ public class Pipe extends Scrollable {
         isScored = false;
     }
 
+    public void onRestart(float x, float scrollSpeed){
+        velocity.x = scrollSpeed;
+        reset(x);
+    }
+
     public boolean collides(Bird bird){
         //Position x is the top left corner of where the pipe begins
         //So obviously collision is only possible when the bird's position is greater than Position x
