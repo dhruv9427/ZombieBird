@@ -193,11 +193,11 @@ public class GameRenderer {
             AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2) - (3 * score.length() - 1), 11);
         }
         //end SpriteBatch
-            batcher.end();
-        }
-
-
+        batcher.end();
     }
+
+
+}
 
 ///*
 //         * Excuse the mess below. Temporary code for testing bounding
@@ -238,8 +238,3 @@ public class GameRenderer {
 //            pipe2.getSkullDown().width, pipe2.getSkullDown().height);
 //    shapeRenderer.rect(pipe3.getSkullDown().x, pipe3.getSkullDown().y,
 //            pipe3.getSkullDown().width, pipe3.getSkullDown().height);
-
-
-
-
-
