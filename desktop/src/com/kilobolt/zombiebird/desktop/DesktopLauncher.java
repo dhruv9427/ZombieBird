@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
 		config.title="Zombie Bird";
+		//Screen Size
 		config.width=272;
 		config.height=408;
 		new LwjglApplication(new ZBGame(), config);
