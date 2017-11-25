@@ -32,8 +32,9 @@ public class AssetLoader {
 
     public static void load(){
 
-        texture = new Texture(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\texture.png"));
+        texture = new Texture(Gdx.files.internal("data\\texture.png"));
         //texture = new Texture(Gdx.files.internal("texture.png"));
+        //C:\Users\DhruvSingh\Desktop\ZombieBird\core\src\com\kilobolt\zbHelpers\texture.png
         //C:\Users\DhruvSingh\Desktop\ZombieBird\core\src\com\kilobolt\zbHelpers\texture.png
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
@@ -64,13 +65,13 @@ public class AssetLoader {
         bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar.flip(false, true);
 
-        dead = Gdx.audio.newSound(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\dead.wav"));
-        flap = Gdx.audio.newSound(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\flap.wav"));
-        coin = Gdx.audio.newSound(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\coin.wav"));
-
-        font = new BitmapFont(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\text.fnt"));
+        dead = Gdx.audio.newSound(Gdx.files.internal("data\\dead.wav"));
+        flap = Gdx.audio.newSound(Gdx.files.internal("data\\flap.wav"));
+        coin = Gdx.audio.newSound(Gdx.files.internal("data\\coin.wav"));
+        //C:\Users\DhruvSingh\Desktop\ZombieBird\core\src\com\kilobolt\zbHelpers\flap.wav
+        font = new BitmapFont(Gdx.files.internal("data\\text.fnt"));
         font.getData().setScale(.25f, -.25f);
-        shadow = new BitmapFont(Gdx.files.internal("C:\\Users\\DhruvSingh\\Desktop\\ZombieBird\\core\\src\\com\\kilobolt\\zbHelpers\\shadow.fnt"));
+        shadow = new BitmapFont(Gdx.files.internal("data\\shadow.fnt"));
         shadow.getData().setScale(.25f, -.25f);
 
         //Creating or retrieving preferences file
