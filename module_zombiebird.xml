@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_zombiebird" default="compile.module.zombiebird">
+  <dirname property="module.zombiebird.basedir" file="${ant.file.module_zombiebird}"/>
+  
+  <property name="module.jdk.home.zombiebird" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.zombiebird" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.zombiebird" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.zombiebird" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="zombiebird.output.dir" value="${module.zombiebird.basedir}/out/production/ZombieBird"/>
+  <property name="zombiebird.testoutput.dir" value="${module.zombiebird.basedir}/out/test/ZombieBird"/>
+  
+  <path id="zombiebird.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="zombiebird.module.production.classpath">
+    <path refid="${module.jdk.classpath.zombiebird}"/>
+    <path refid="library.tween-engine-api.classpath"/>
+    <path refid="library.tween-engine-api-sources.classpath"/>
+  </path>
+  
+  <path id="zombiebird.runtime.production.module.classpath">
+    <pathelement location="${zombiebird.output.dir}"/>
+    <path refid="library.tween-engine-api.classpath"/>
+    <path refid="library.tween-engine-api-sources.classpath"/>
+  </path>
+  
+  <path id="zombiebird.module.classpath">
+    <path refid="${module.jdk.classpath.zombiebird}"/>
+    <pathelement location="${zombiebird.output.dir}"/>
+    <path refid="library.tween-engine-api.classpath"/>
+    <path refid="library.tween-engine-api-sources.classpath"/>
+  </path>
+  
+  <path id="zombiebird.runtime.module.classpath">
+    <pathelement location="${zombiebird.testoutput.dir}"/>
+    <pathelement location="${zombiebird.output.dir}"/>
+    <path refid="library.tween-engine-api.classpath"/>
+    <path refid="library.tween-engine-api-sources.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.zombiebird">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.zombiebird">
+    <patternset refid="excluded.from.module.zombiebird"/>
+  </patternset>
+  
+  
+  <target name="compile.module.zombiebird" depends="compile.module.zombiebird.production,compile.module.zombiebird.tests" description="Compile module ZombieBird"/>
+  
+  <target name="compile.module.zombiebird.production" depends="register.custom.compilers" description="Compile module ZombieBird; production classes"/>
+  
+  <target name="compile.module.zombiebird.tests" depends="register.custom.compilers,compile.module.zombiebird.production" description="compile module ZombieBird; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.zombiebird" description="cleanup module">
+    <delete dir="${zombiebird.output.dir}"/>
+    <delete dir="${zombiebird.testoutput.dir}"/>
+  </target>
+</project>
