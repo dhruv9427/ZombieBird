@@ -39,6 +39,7 @@ public class Bird {
         }
 
         //CEILING CHECK
+        //This is a test
         if(position.y<-13){
             position.y=-13;
             velocity.y = 0;
