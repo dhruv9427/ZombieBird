@@ -45,6 +45,7 @@ public class Bird {
         //4th test
         //5th attempt with key
         //6th attempt with the PAT from Githubsssss
+        //new day new attempt
         if(position.y<-13){
             position.y=-13;
             velocity.y = 0;
